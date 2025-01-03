@@ -51,13 +51,15 @@ Non-pretrained 모델은 상대적으로 초기 손실이 낮고, 수렴 속도�
 1 epoch 진행하는데 몇 시간이 걸리다보니 많이 돌려보지 못했습니다.
 
 2. 성능 비교:
-3. 
+
 Pretrained Epoch 1/3
 Train Loss: 0.0049, Train Accuracy: 99.97%
 Test Loss: 0.0001, Test Accuracy: 100.00%
+
 Pretrained Epoch 2/3
 Train Loss: 0.0001, Train Accuracy: 100.00%
 Test Loss: 0.0000, Test Accuracy: 100.00%
+
 Pretrained Epoch 3/3
 Train Loss: 0.0000, Train Accuracy: 100.00%
 Test Loss: 0.0000, Test Accuracy: 100.00%
@@ -65,9 +67,11 @@ Test Loss: 0.0000, Test Accuracy: 100.00%
 Non-pretrained Epoch 1/3
 Train Loss: 0.0017, Train Accuracy: 99.94%
 Test Loss: 0.0000, Test Accuracy: 100.00%
+
 Non-pretrained Epoch 2/3
 Train Loss: 0.0000, Train Accuracy: 100.00%
 Test Loss: 0.0000, Test Accuracy: 100.00%
+
 Non-pretrained Epoch 3/3
 Train Loss: 0.0000, Train Accuracy: 100.00%
 Test Loss: 0.0000, Test Accuracy: 100.00%
