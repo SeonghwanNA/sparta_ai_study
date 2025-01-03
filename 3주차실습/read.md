@@ -14,12 +14,15 @@ Q2) 모델은 어떻게 설계하셨나요? 설계한 모델의 입력과 출력
 모델 구조:
 
 Input: Tokenized words of a sentence (input_ids, attention_mask)
+
 Output: Label corresponding to each token in the input sentence (e.g., 'O', 'B-PER', 'I-PER', etc.)
 
 입력 예시:
 
 Sentence: "Barack Obama was born in Hawaii."
+
 Input: ["Barack", "Obama", "was", "born", "in", "Hawaii"]
+
 Output (Labels): ['B-PER', 'I-PER', 'O', 'O', 'O', 'B-LOC']
 
 
