@@ -92,7 +92,7 @@ Test Loss: 0.0000, Test Accuracy: 100.00%
 그렇지만, 차이를 크게 느끼지 못한 점을 감안하여 확인해 주세요.
 
 결론
-**Pre-trained 모델 (DistilBERT)**과 Non-pretrained Transformer를 비교했을 때, 두 모델 간의 성능 차이가 그렇게 크게 나지 않았습니다. 훈련 정확도와 테스트 정확도가 거의 동일했고, 손실 또한 비슷한 수준이었습니다. 이로 인해 pre-trained 모델의 효과를 체감하지 못했습니다.
+Pre-trained 모델 (DistilBERT)과 Non-pretrained Transformer를 비교했을 때, 두 모델 간의 성능 차이가 그렇게 크게 나지 않았습니다. 훈련 정확도와 테스트 정확도가 거의 동일했고, 손실 또한 비슷한 수준이었습니다. 이로 인해 pre-trained 모델의 효과를 체감하지 못했습니다.
 
 원인 분석:
 
