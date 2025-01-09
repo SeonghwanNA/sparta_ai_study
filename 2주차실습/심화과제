@@ -1,0 +1,61 @@
+# [2주차] 심화과제: Multi-head Attention으로 감정 분석 모델 구현하기
+
+<aside>
+💡 **이번 과제에서는 Transformer encoder의 완전한 형태를 구현합니다. Self-attention을 multi-head attention으로 확장하고 layer normalization, dropout, residual connection 등의 technique을 적용하여 감정 분석 성능을 확인해봅니다.**
+
+</aside>
+
+## 준비
+
+---
+
+Transformer 실습을 진행한 notebook 위에서 진행해주시면 됩니다:
+
+[](https://drive.google.com/file/d/1vh4ALpRVicq9hdonHYiLTlsPhY6LLZAE/view?usp=share_link)
+
+## 목표
+
+---
+
+- [ ]  Multi-head attention(MHA) 구현
+    - Self-attention module을 MHA로 확장해주시면 됩니다. 여기서 MHA는 다음과 같이 구현합니다.
+        1. 기존의 $W_q, W_k, W_v$를 사용하여 $Q, K, V$를 생성합니다. 이 부분은 코드 수정이 필요 없습니다.
+        2. $Q, K, V \in \mathbb{R}^{S \times D}$가 있을 때, 이를 $Q, K, V \in \mathbb{R}^{S \times H \times D’}$으로 reshape 해줍니다. 여기서 $H$는 `n_heads`라는 인자로 받아야 하고, $D$가 $H$로 나눠 떨어지는 값이여야 하는 제약 조건이 필요합니다. $D = H \times D’$입니다.
+        3. $Q, K, V$를 $Q, K, V \in \mathbb{R}^{H \times S \times D’}$의 shape으로 transpose해줍니다.
+        4. $A = QK^T/\sqrt{D'} \in \mathbb{R}^{H \times S \times S}$를 기존의 self-attention과 똑같이 계산합니다. 이 부분은 코드 수정이 필요 없습니다.
+        5. Mask를 더합니다. 기존과 $A$의 shape이 달라졌기 때문에 dimension을 어떻게 맞춰줘야할지 생각해줘야 합니다.
+        6. $\hat{x} = \textrm{Softmax}(A)V \in \mathbb{R}^{H \times S \times D'}$를 계산해주고 transpose와 reshape을 통해 $\hat{x} \in \mathbb{R}^{S \times D}$의 shape으로 다시 만들어줍니다.
+        7. 기존과 똑같이 $\hat{x} = \hat{x} W_o$를 곱해줘서 마무리 해줍니다. 이 또한 코드 수정이 필요 없습니다.
+- [ ]  Layer normalization, dropout, residual connection 구현
+    - 다시 `TransformerLayer` class로 돌아와서 과제를 진행하시면 됩니다.
+    - Attention module을 $MHA$, feed-forward layer를 $FFN$이라고 하겠습니다.
+    - 기존의 구현은 다음과 같습니다:
+        
+        ```python
+        # x, mask is given
+        
+        x1 = MHA(x, mask)
+        x2 = FFN(x1)
+        
+        return x2
+        ```
+        
+    - 다음과 같이 수정해주시면 됩니다.
+        
+        ```python
+        # x, mask is given
+        
+        x1 = MHA(x, mask)
+        x1 = Dropout(x1)
+        x1 = LayerNormalization(x1 + x)
+        
+        x2 = FFN(x1)
+        x2 = Dropout(x2)
+        x2 = LayerNormalization(x2 + x1)
+        
+        return x2
+        ```
+        
+    - 여기서 `x1 + x`와 `x2 + x1`에 해당하는 부분들은 residual connection이라고 부릅니다.
+- [ ]  5-layer 4-head Transformer
+    - 기존 실습에서 사용한 hyper-parameter들과 위에서 구현한 Transformer를 가지고 5-layer 4-head Transformer의 성능 결과를 report해주시면 됩니다.
