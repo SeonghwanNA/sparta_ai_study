@@ -1,0 +1,48 @@
+# [2주차] 기본과제: 주어진 문장에서 나올 다음 단어를 예측하는 모델 구현
+
+<aside>
+💡 **이번 과제에서는 Transformer를 last word prediction이라는 task에 적용합니다. Last word prediction은 Token list가 주어졌을 때, 다음으로 오는 token을 예측하는 task로, 추후 등장할 LLM의 핵심입니다.**
+
+</aside>
+
+## 준비
+
+---
+
+Transformer 실습을 진행한 notebook 위에서 진행해주시면 됩니다:
+
+[](https://drive.google.com/file/d/1vh4ALpRVicq9hdonHYiLTlsPhY6LLZAE/view?usp=share_link)
+
+## 목표
+
+---
+
+- [ ]  Last word prediction dataset 준비
+    - 기존의 IMDB dataset을 그대로 활용하고, `collate_fn`을 다음과 같이 수정하면 됩니다:
+        
+        ```python
+        from torch.nn.utils.rnn import pad_sequence
+        
+        def collate_fn(batch):
+          max_len = 400
+          texts, labels = [], []
+          for row in batch:
+            labels.append(tokenizer(row['text'], truncation=True, max_length=max_len).input_ids[-2])
+            texts.append(torch.LongTensor(tokenizer(row['text'], truncation=True, max_length=max_len).input_ids[:-2]))
+        
+          texts = pad_sequence(texts, batch_first=True, padding_value=tokenizer.pad_token_id)
+          labels = torch.LongTensor(labels)
+        
+          return texts, labels
+        ```
+        
+- [ ]  Loss function 및 classifier output 변경
+    - 마지막 token id를 예측하는 것이기 때문에 binary classification이 아닌 일반적인 classification 문제로 바뀝니다. MNIST 과제에서 했던 것 처럼 loss와 `TextClassifier`의 출력 차원을 잘 조정하여 task를 풀 수 있도록 수정하시면 됩니다.
+- [ ]  학습 결과 report
+    - 기존 Transformer 실습에서 사용한 모델로 last word prediction을 학습하고 학습 경과를 report하면 됩니다.
+
+## 제출자료
+
+---
+
+제약 조건은 전혀 없으며, 위의 사항들을 구현하고 epoch마다의 train accuracy와 test accuracy가 print된 notebook을 public github repository에 업로드하여 공유해주시면 됩니다(**반드시 출력 결과가 남아있어야 합니다!!**).
