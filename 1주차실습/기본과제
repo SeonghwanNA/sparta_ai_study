@@ -1,0 +1,78 @@
+# [1주차] 기본과제: MNIST를 분류 모델로 학습하기
+
+### MNIST 분류(classification) 모델 구현
+
+<aside>
+💡 이번 과제에서는 MNIST를 regression model이 아닌 classification model로 구현합니다. 그리고 train과 test data에 대한 모델의 정확도를 plot하여 generalization error를 살펴봅니다.
+
+</aside>
+
+## 준비
+
+---
+
+MNIST 실습을 진행한 notebook 위에서 과제를 수행하시면 됩니다:
+
+[](https://drive.google.com/file/d/1t5mCDlTDGIDe30cuh2GpiUOalakPz_hF/view?usp=drive_link)
+
+## 목표
+
+---
+
+MNIST 실습과 똑같은 task와 model을 사용합니다. 대신 다음의 목표들을 notebook에서 마저 구현해주시면 됩니다:
+
+- [ ]  Test data 준비하기
+    - Test data는 MNIST의 train data를 load하는 코드에서 `train=False`로 두면 됩니다.
+    - Train data와 마찬가지로 test data에 대한 data loader를 생성해주시면 됩니다(batch size는 동일하게 적용).
+        - Test data는 랜덤하게 섞일 필요가 없기 때문에 `shuffle=False`로 설정합니다.
+- [ ]  `nn.CrossEntropyLoss` 적용하기
+    - 현재 코드는 regression model을 구현한 상태로, MSE를 loss로 사용하고 있습니다.
+    - 하지만 MNIST와 같은 분류 문제에서는 MSE는 적합하지 않습니다.
+        - MSE에 따르면 1에 해당하는 손글씨 이미지는 7에 해당하는 손글씨 이미지보다 0에 해당하는 손글씨 이미지가 더 가깝게 여겨집니다.
+        - 하지만 1은 실제로 0보다 7과 더 비슷하게 생겼습니다.
+    - 일반적으로 분류 문제는 MSE 대신 cross entropy loss를 사용합니다.
+    - PyTorch에서의 [cross entropy loss 문서](https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html) 또는 [웹 자료](https://uumini.tistory.com/54)들을 통해 이해한 후, MSE를 대체하는 코드를 구현하시면 됩니다.
+        - 변경되어야 할 점은 2가지로 i) `Model`의 최종 output의 dimension과 ii) `loss` 계산 부분입니다.
+- [ ]  학습을 진행한 후, epoch에 따른 model의 train과 test data에 대한 정확도 plot하기
+    - 다음 조건들 아래에서 학습을 진행하면 됩니다.
+        - `n_epochs`=100, `batch_size`=256, `lr`=0.001.
+    - 어떤 dataloader에 대한 model의 정확도를 측정하는 코드는 다음 함수를 사용하시면 됩니다:
+        
+        ```python
+        def accuracy(model, dataloader):
+          cnt = 0
+          acc = 0
+        
+          for data in dataloader:
+            inputs, labels = data
+            inputs, labels = inputs.to('cuda'), labels.to('cuda')
+        
+            preds = model(inputs)
+            preds = torch.argmax(preds, dim=-1)
+        
+            cnt += labels.shape[0]
+            acc += (labels == preds).sum().item()
+        
+          return acc / cnt
+        ```
+        
+    - 추가적으로 구현되어야 하는 부분들을 요약하면 다음과 같습니다:
+        - 매 epoch가 끝난 뒤의 model의 `trainloader`와 `testloader`에 대한 정확도를 각각 list로 저장해둡니다.
+        - Epoch에 따른 train과 test data에 대한 model의 정확도를 다음 코드를 사용하여 plot합니다:
+            
+            ```python
+            def plot_acc(train_accs, test_accs, label1='train', label2='test'):
+              x = np.arange(len(train_accs))
+            
+              plt.plot(x, train_accs, label=label1)
+              plt.plot(x, test_accs, label=label2)
+              plt.legend()
+              plt.show()
+            ```
+            
+
+## 제출자료
+
+---
+
+제약 조건은 전혀 없으며, 위의 사항들을 구현하고 plot이 1개 포함된 notebook을 public github repository에 업로드하여 공유해주시면 됩니다(**반드시 출력 결과가 남아있어야 합니다!!**).
