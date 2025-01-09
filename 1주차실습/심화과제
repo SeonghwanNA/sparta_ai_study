@@ -1,0 +1,40 @@
+# [1주차] 심화과제: MNIST 예측 모델에 deep learning techniques 적용하기
+
+## 준비
+
+---
+
+기본 과제를 구현한 notebook에서 진행하시면 됩니다.
+
+## 목표
+
+---
+
+Classification model을 MNIST에 적용한 코드에서 다음 부분들을 변경하거나 추가해주시면 됩니다:
+
+- [ ]  Dataset 및 activation 함수 변경
+    - Dataset을 MNIST에서 [CIFAR10](https://pytorch.org/vision/stable/generated/torchvision.datasets.CIFAR10.html)으로 변경해줍니다.
+    - Activation 함수를 `nn.ReLU`에서 `nn.LeakyReLU`로 변경해줍니다.
+    - 학습 인자는 `n_epochs` = 50, `batch_size` = 256로 설정합니다.
+- [ ]  CIFAR10의 입력 shape 확인
+    - CIFAR10은 MNIST와 다른 입력 shape을 가지고 있습니다.
+    - 입력 shape은 model을 선언할 때 중요하기 때문에 MNIST 실습 자료에서 사용한 방식과 똑같이 shape을 확인해주시면 됩니다.
+- [ ]  SGD와 Adam 성능 비교
+    - 먼저 [Adam optimizer](https://pytorch.org/docs/stable/generated/torch.optim.Adam.html)을 사용하여 학습하는 코드를 구현합니다.
+    - (Plot 1) SGD와 Adam을 학습시킨 후 각각의 epoch에 대한 train 정확도를 plot합니다.
+- [ ]  Leaky ReLU와 Sigmoid 성능 비교
+    - Activation 함수가 `nn.Sigmoid`인 class를 새로 정의합니다.
+    - (Plot 2) Adam optimizer를 가지고 sigmoid와 leaky ReLU 모델들을 학습한 후, epoch에 따른 train 정확도를 비교합니다.
+- [ ]  Dropout을 적용한 이후의 generalization error 확인
+    - PyTorch [dropout](https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html)을 leaky ReLU를 사용하는 MLP의 모든 layer에 적용한 class를 새로 정의합니다. Dropout 확률은 0.1로 설정합니다.
+    - 학습 코드에서 다음 부분들을 추가해줍니다:
+        - `model.train()`을 `for data in trainloader:` 이전 줄에 둡니다.
+        - `trainloader`와 `testloader`에 대한 정확도를 계산하는 코드를 다음과 같이 변경합니다:
+            
+            ```python
+            with torch.no_grad():
+              model.eval()
+              <기존 정확도 계산 코드>
+            ```
+            
+    - (Plot 3) Adam optimizer를 가지고 dropout을 적용한 모델을 학습한 후, epoch에 따른 train과 test 정확도를 비교합니다.
