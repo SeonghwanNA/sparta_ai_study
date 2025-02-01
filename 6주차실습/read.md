@@ -22,14 +22,16 @@
 extract_city_name(): 도시 이름 추출
 extract_total_days(): 여행 기간 추출
 generate_travel_plan_prompt(): 여행 계획 생성 프롬프트 생성
+
 이미지 입력 처리
 analyze_image(): 이미지 배경 분석 및 도시 추천
 generate_travel_plan_prompt(): 여행 계획 생성 프롬프트 생성
+
 여행 계획 및 도시 정보 생성
 generate_travel_plan_prompt(): OpenAI GPT-4o-mini 모델에 입력하여 여행 계획 생성
 generate_city_info_prompt(): OpenAI GPT-4o-mini 모델에 입력하여 도시 정보 생성
-출력:
 
+출력:
 여행 계획: 상세 일정 (텍스트 형태)
 도시 정보: 추천 식당, 관광 명소, 숙소 등
 
