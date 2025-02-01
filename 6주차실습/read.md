@@ -15,10 +15,9 @@
 
 텍스트: 여행할 나라, 도시, 기간, 스타일 등 (예: "프랑스 파리 5일 자유 여행")
 이미지: 여행지 사진 (선택 사항)
+
 처리:
-
 텍스트 입력 처리
-
 extract_city_name(): 도시 이름 추출
 extract_total_days(): 여행 기간 추출
 generate_travel_plan_prompt(): 여행 계획 생성 프롬프트 생성
