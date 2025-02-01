@@ -38,7 +38,7 @@ generate_city_info_prompt(): OpenAI GPT-4o-mini 모델에 입력하여 도시 �
 OpenAI GPT-4o-mini: 여행 계획 및 도시 정보 생성
 LangChain: 프롬프트 생성 및 관리, 외부 API 연동
 RAG - DuckDuckGo Search API: 여행 정보 검색 (추후 Google Maps API, Google Search API 등으로 확장)
-
+
 5. 개선 방향
 속도 개선: 비동기 처리, 캐싱 전략 도입(도입했다가 뺌. 여행 계획 정보는 항상 다르게 나와야함)
 프롬프트 엔지니어링: 프롬프트 템플릿 개선, Few-shot learning 적용
