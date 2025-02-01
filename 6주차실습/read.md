@@ -39,19 +39,18 @@ OpenAI GPT-4o-mini: 여행 계획 및 도시 정보 생성
 LangChain: 프롬프트 생성 및 관리, 외부 API 연동
 RAG - DuckDuckGo Search API: 여행 정보 검색 (추후 Google Maps API, Google Search API 등으로 확장)
 
-5. 개선 방향
+4. 개선 방향
 속도 개선: 비동기 처리, 캐싱 전략 도입(도입했다가 뺌. 여행 계획 정보는 항상 다르게 나와야함)
 프롬프트 엔지니어링: 프롬프트 템플릿 개선, Few-shot learning 적용
 기능 확장: 다국어 지원, 여행 테마 추천, 챗봇 기능 등
 UI/UX 개선: 지도 연동, 이미지 갤러리, 사용자 프로필 등
 
-7. 기대 효과
+5. 기대 효과
 사용자 맞춤형 여행 계획 제공
 여행 계획 수립 시간 단축
 여행 정보 접근성 향상
 새로운 여행 경험 제공
 
-9. 참고
-10. 
+6. 참고 
 영상 용량이 너무커 구글 드라이브로 대체합니다.
 https://drive.google.com/file/d/1UD2h6nPKuB2tc9yVA0fNQF_gQDmBk-Rz/view?usp=sharing
