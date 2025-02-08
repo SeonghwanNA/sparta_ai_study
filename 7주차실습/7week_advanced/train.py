@@ -34,7 +34,7 @@ train_dataset = train_valid_dataset["train"]
 valid_dataset = train_valid_dataset["test"]
 
 # 4. 토크나이저 불러오기
-model_name = "facebook/bart-large"
+model_name = "gpt2"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 # padding 토큰 설정 (필요시 추가)
