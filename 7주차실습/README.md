@@ -10,7 +10,7 @@ dataset_name openwebtext
 https://wandb.ai/ainabakgood-personal/7week_basic_nabakgood_ai?nw=nwuserainabakgood&panelDisplayName=train%2Floss&panelSectionName=train
 
 2. 심화 과제
-페이스북에서 만든 bart로 돌려서 했습니다.
+페이스북에서 만든 gpt2로 돌려서 했습니다.
 데이터 모으는게 힘들었네요...
 근데 그 과정이 생각보다 재밌었습니다.
 
