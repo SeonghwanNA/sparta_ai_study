@@ -7,6 +7,7 @@ LoRA Rank에 따른 학습 성능 비교 (8주차 기본 과제)
 * LoRA rank (lora_r): 8, 128, 256
 * Deepspeed: 사용 안 함
 * SFTTrainer 설정:
+* Wandb log : https://wandb.ai/ainabakgood-personal/LoRa%20test-8week-basic?nw=nwuserainabakgood&panelDisplayName=train%2Floss&panelSectionName=train
 
 실험 결과
 
