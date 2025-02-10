@@ -11,10 +11,18 @@ wandb log : https://wandb.ai/ainabakgood-personal/LoRa%20test-8week-basic?nw=nwu
 
 
 실험 결과
-LoRA Rank	train_runtime (s)	train_samples_per_second	train_steps_per_second	train_loss	Max Alloc (GB)
-8	            2979.7306             20.158	                 2.52	               1.7972	     3.1
-128	          3150.6706	            19.065	                 2.383	             1.7856	     3.2
-256	          3377.9271	            17.782	                 2.223	             1.7853	     3.4
+LoRA rank : 8
+{'train_runtime': 2979.7306, 'train_samples_per_second': 20.158, 'train_steps_per_second': 2.52, 'train_loss': 1.7972377590911495, 'epoch': 3.0}
+Max Alloc: 3.1 GB
+
+
+LoRA rank : 128
+{'train_runtime': 3150.6706, 'train_samples_per_second': 19.065, 'train_steps_per_second': 2.383, 'train_loss': 1.7855897097727924, 'epoch': 3.0}
+Max Alloc: 3.2 GB
+
+LoRA rank : 256
+{'train_runtime': 3377.9271, 'train_samples_per_second': 17.782, 'train_steps_per_second': 2.223, 'train_loss': 1.7853196822687287, 'epoch': 3.0}
+Max Alloc: 3.4 GB
 
 
 결과 분석
