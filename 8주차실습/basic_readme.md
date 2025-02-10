@@ -1,4 +1,5 @@
 LoRA Rank에 따른 학습 성능 비교 (8주차 기본 과제)
+
 본 문서는 LoRA (Low-Rank Adaptation)에서 rank 값을 변경하면서 학습을 진행했을 때 발생하는 성능, 학습 속도, 메모리 사용량의 변화를 분석하고, LoRA의 장단점을 논의합니다.
 실험 설정
 * 모델: facebook/opt-350m
@@ -8,6 +9,7 @@ LoRA Rank에 따른 학습 성능 비교 (8주차 기본 과제)
 * SFTTrainer 설정:
 
 실험 결과
+
 LoRA rank : 8
 {'train_runtime': 2979.7306, 'train_samples_per_second': 20.158, 'train_steps_per_second': 2.52, 'train_loss': 1.7972377590911495, 'epoch': 3.0}
 Max Alloc: 3.1 GB
@@ -40,5 +42,6 @@ LoRA의 장단점
 * 학습 속도 감소: Rank가 증가함에 따라 학습 속도가 느려집니다.
 
 결론
+
 LoRA는 제한된 컴퓨팅 자원으로 대규모 언어 모델을 효과적으로 fine-tuning 할 수 있는 강력한 기법입니다. Rank 값은 성능, 속도, 메모리 사용량 간의 균형을 조절하는 중요한 하이퍼파라미터입니다. 본 실험에서는 rank 128이 loss와 메모리 사용량 측면에서 적절한 균형을 제공하는 것으로 보입니다. 하지만 최적의 rank는 task와 데이터셋에 따라 달라질 수 있으므로, 실험을 통해 찾아야 합니다.
 
