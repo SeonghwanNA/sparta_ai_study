@@ -2,8 +2,11 @@
 
 ## 테스트 결과 (제한 사항)
 
-이 코드는 LLaMA 모델의 성능을 비교하기 위해 작성되었으나, AWS 비용 문제(20만원 넘게 초과되어 해보지 못함...)와 장비(로컬 머신)의 한계로 인해 충분한 테스트를 수행하지 못했습니다.  
-보다 정확하고 신뢰성 있는 결과를 얻으려면 더 큰 규모의 컴퓨팅 자원(예: 더 많은 GPU 메모리, 더 긴 훈련 시간)이 필요합니다. 
+LLaMA 모델의 성능을 비교하고 싶었으나 AWS 비용 문제(20만원 넘게 초과되어 해보지 못함...)와 장비(로컬 머신)의 한계로 인해 충분한 테스트를 수행하지 못했습니다.  
+flash_attention도 적용해봤으나 gpu가 필요하다하여... cpu로 돌릴 수 있는 lora와 sfttrain만 적용해서 해봤습니다.
+추후 환경이 된다면 이것저것 해보고 싶네요.
+보다 정확하고 신뢰성 있는 결과를 얻으려면 더 큰 규모의 컴퓨팅 자원(예: 더 많은 GPU 메모리, 더 긴 훈련 시간)이 필요합니다.
+
 
 https://wandb.ai/ainabakgood-personal/instruction-tuning-korea-travel-lora?nw=nwuserainabakgood&panelDisplayName=eval%2Floss&panelSectionName=eval
 
